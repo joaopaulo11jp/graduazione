@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Teste</title>
+	<style>
+			#telaContent{
+				background-image:url('#{request.contextPath}/img/bg2.jpg');
+			}
+			#logo{
+				display:inline-block;
+			}
+
+			header{
+				
+				text-align: center;
+			}
+
+			#ifpblogo{
+				position: fixed;
+				bottom:0;
+				right:0;
+				width:20%;
+			}
+
+			#botaoLogin{
+				text-align: right;	
+			}
+
+			#boxLogin{
+				display:inline-block;
+			}
+
+	</style>
+</h:head>
+<h:body id="telaContent">
+
+<header>
+	<img src="img/graduazionelogo.png" id="logo"></img>
+</header>
+	<img src="img/ifpb.png" id="ifpblogo"></img>
+<h:form id="formLogin">           
+<!--     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login" > -->
+<!--     	<h:outputText value="clique aqui"/> -->
+<!--     </h:outputLink> -->
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+ 
+    <p:dialog header="Login" widgetVar="dlg" resizable="false" draggable="false" closable="false" id="boxLogin">
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel for="username" value="Usuário:" />
+            <p:inputText id="username" value="#{loginServiceBean.login}" required="true" label="username" />
+ 
+            <h:outputLabel for="password" value="Senha:" />
+            <p:password id="password" value="#{loginServiceBean.senha}" required="true" label="password" />
+ 
+            <f:facet name="footer">
+                <p:commandButton value="Login" id="botaoLogin" update="growl" action="#{loginServiceBean.fazerLogin()}" oncomplete="handleLoginRequest(xhr, status, args)"/>
+                                 <!--[atributo de commandButton]   ( usar quando tiver com actionListener, é uma boa --> 
+            </f:facet> 
+        </h:panelGrid>
+    </p:dialog>
+</h:form>
+ 
+<script type="text/javascript">
+	$(document).ready(function(){
+		PF('dlg').show();
+	});
+
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+    
+    
+</script>
+</h:body>
+</html>

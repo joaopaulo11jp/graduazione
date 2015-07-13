@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title><ui:insert name="titulo"/></title>
+	<style>
+			#telaContent{
+				background-image:url('#{request.contextPath}/img/bg2.jpg');
+				
+
+			}
+			#logo{
+				display:inline-block;
+			}
+
+			header{
+				
+				text-align: center;
+			}
+
+			#botaoLogin{
+				text-align: right;	
+			}
+
+			#boxLogin{
+				display:inline-block;
+			}
+
+			footer{
+				position:absolute;
+			}
+
+			#ftText{
+				bottom:0;
+				text-align:center;
+			}
+	</style>
+</h:head>
+<h:body id="telaContent">
+
+<header>
+	<img src="img/graduazionelogo.png" id="logo"></img>
+</header>
+	<!--<img src="img/ifpb.png" id="ifpblogo"></img>-->
+
+
+	
+	<p:layoutUnit position="south" size="15%">    
+      		Copyright João Paulo
+    </p:layoutUnit>
+</h:body>
+</html>

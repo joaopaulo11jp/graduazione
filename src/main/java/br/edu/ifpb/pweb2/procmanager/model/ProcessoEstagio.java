@@ -1,0 +1,66 @@
+package br.edu.ifpb.pweb2.procmanager.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class ProcessoEstagio {
+	@Id
+	private Long protocolo;
+	@OneToOne
+	private Professor orientador;
+	private Date dataAbertura;
+	private Date dataChegada;
+	@OneToOne
+	private Situacao situacao;
+	
+		public ProcessoEstagio(Long protocolo, Professor orientador,
+				Date dataAbertura, Date dataChegada, Situacao situacao) {
+			this.protocolo = protocolo;
+			this.orientador = orientador;
+			this.dataAbertura = dataAbertura;
+			this.dataChegada = dataChegada;
+			this.situacao = situacao;
+		}
+		
+		public ProcessoEstagio(){}
+
+	public Long getProtocolo() {
+		return protocolo;
+	}
+
+	public void setProtocolo(Long protocolo) {
+		this.protocolo = protocolo;
+	}
+
+	public Professor getOrientador() {
+		return orientador;
+	}
+
+	public void setOrientador(Professor orientador) {
+		this.orientador = orientador;
+	}
+
+	public Date getDataAbertura() {
+		return dataAbertura;
+	}
+
+	public void setDataAbertura(Date dataAbertura) {
+		this.dataAbertura = dataAbertura;
+	}
+
+	public Date getDataChegada() {
+		return dataChegada;
+	}
+
+	public void setDataChegada(Date dataChegada) {
+		this.dataChegada = dataChegada;
+	}
+	
+}

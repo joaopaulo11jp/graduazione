@@ -12,8 +12,7 @@ public class TipoDefesa {
 	private int id;
 	private String descricao;
 	
-		public TipoDefesa(int id, String descricao){
-			this.id = id;
+		public TipoDefesa(String descricao){
 			this.descricao = descricao;
 		}
 		

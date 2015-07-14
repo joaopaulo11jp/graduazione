@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 public class ProcessoEstagio {
 	@Id
 	private Long protocolo;
-	@OneToOne
-	private Professor orientador;
 	private Date dataAbertura;
 	private Date dataChegada;
 	@OneToOne
@@ -23,7 +21,6 @@ public class ProcessoEstagio {
 		public ProcessoEstagio(Long protocolo, Professor orientador,
 				Date dataAbertura, Date dataChegada, Situacao situacao) {
 			this.protocolo = protocolo;
-			this.orientador = orientador;
 			this.dataAbertura = dataAbertura;
 			this.dataChegada = dataChegada;
 			this.situacao = situacao;
@@ -37,14 +34,6 @@ public class ProcessoEstagio {
 
 	public void setProtocolo(Long protocolo) {
 		this.protocolo = protocolo;
-	}
-
-	public Professor getOrientador() {
-		return orientador;
-	}
-
-	public void setOrientador(Professor orientador) {
-		this.orientador = orientador;
 	}
 
 	public Date getDataAbertura() {

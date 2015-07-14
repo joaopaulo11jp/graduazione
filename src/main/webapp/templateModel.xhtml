@@ -22,6 +22,7 @@
 			header{
 				
 				text-align: center;
+				top: 50%;
 			}
 
 			#botaoLogin{
@@ -40,19 +41,30 @@
 				bottom:0;
 				text-align:center;
 			}
+		
 	</style>
 </h:head>
 <h:body id="telaContent">
-
-<header>
+	<header>
 	<img src="img/graduazionelogo.png" id="logo"></img>
-</header>
+	</header>
 	<!--<img src="img/ifpb.png" id="ifpblogo"></img>-->
-
-
+	<ui:insert name="inits">
+		#{sessionBean.unloadFlashLogin()}
+	</ui:insert>
 	
-	<p:layoutUnit position="south" size="15%">    
-      		Copyright João Paulo
-    </p:layoutUnit>
+	<h:panelGroup rendered="#{sessionBean.usuario.coordenadorCurso == true}">
+		<ui:include src="cordCursoNavBar.xhtml"/>
+	</h:panelGroup>
+	
+	<h:panelGroup rendered="#{sessionBean.usuario.coordenadorCurso == false}">
+		<ui:include src="cordEstagioNavBar.xhtml"/>
+	</h:panelGroup>
+	<br/>
+	<br/>
+	<ui:insert name="body">
+	</ui:insert>
+
+
 </h:body>
 </html>

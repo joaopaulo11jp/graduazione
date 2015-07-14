@@ -41,7 +41,7 @@ public class LoginServiceBean{
 			System.out.println("localizou o usuario: "+usuario.getLogin());
 			System.out.println("Professor: "+usuario.getProfessor().getNome());
 			this.loadFlashLogin(usuario);
-			return "checaLogin.jsf";
+			return "boasVindas.jsf";
 		}else{
 			System.out.println("Nao encontrou usuario e retornou nulo");
 			this.addMessage("Falha ao efetuar login","Login ou senha inválidos!");

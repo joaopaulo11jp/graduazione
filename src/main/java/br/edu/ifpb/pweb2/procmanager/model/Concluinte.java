@@ -15,7 +15,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @Entity
 public class Concluinte {
 	@Id
-	private Long matricula;
+	private String matricula;
 	private String nome;
 	@OneToMany
     @JoinTable(name="Concluinte_Banca", joinColumns={@JoinColumn(name="concluinte_id", referencedColumnName="matricula")}, inverseJoinColumns={@JoinColumn(name="professor_id", referencedColumnName="id")})
@@ -38,11 +38,14 @@ public class Concluinte {
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="concluinte_id")
 	private List<Historico> conjuntoHistorico;
+	@OneToOne
+	private Professor orientador;
+	private Date dataApresentacao;
 	
-		public Concluinte(Long matricula, String nome, List<Professor> banca,
+		public Concluinte(String matricula, String nome, List<Professor> banca,
 			TipoDefesa tipo, String tituloDefesa, double nota,
 			ProcessoEstagio processoEstagio, List<Anotacao> anotacoes,
-			List<Pendencia> pendencias, Date dataConclusao) {
+			List<Pendencia> pendencias, Date dataConclusao,Date dataApresentacao,Professor orientador) {
 		
 			this.matricula = matricula;
 			this.nome = nome;
@@ -54,15 +57,17 @@ public class Concluinte {
 			this.anotacoes = anotacoes;
 			this.pendencias = pendencias;
 			this.dataConclusao = dataConclusao;
+			this.dataApresentacao = dataApresentacao;
+			this.orientador = orientador;
 		}
 		
 		public Concluinte(){}
 
-	public Long getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
 
-	public void setId(Long matricula) {
+	public void setId(String matricula) {
 		this.matricula = matricula;
 	}
 
@@ -144,6 +149,26 @@ public class Concluinte {
 
 	public void setConjuntoHistorico(List<Historico> conjuntoHistorico) {
 		this.conjuntoHistorico = conjuntoHistorico;
+	}
+
+	public Professor getOrientador() {
+		return orientador;
+	}
+
+	public void setOrientador(Professor orientador) {
+		this.orientador = orientador;
+	}
+
+	public Date getDataApresentacao() {
+		return dataApresentacao;
+	}
+
+	public void setDataApresentacao(Date dataApresentacao) {
+		this.dataApresentacao = dataApresentacao;
+	}
+
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
 	
 }

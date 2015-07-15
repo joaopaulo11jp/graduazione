@@ -11,6 +11,7 @@ public class TipoPendencia {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String descricaoPendencia;
+	private boolean obrigatoria;
 	
 		public TipoPendencia(int id, String descricaoPendencia) {
 			this.id = id;
@@ -33,6 +34,14 @@ public class TipoPendencia {
 
 	public void setDescricaoPendencia(String descricaoPendencia) {
 		this.descricaoPendencia = descricaoPendencia;
+	}
+
+	public boolean isObrigatoria() {
+		return obrigatoria;
+	}
+
+	public void setObrigatoria(boolean obrigatoria) {
+		this.obrigatoria = obrigatoria;
 	}
 	
 

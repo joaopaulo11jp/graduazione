@@ -230,9 +230,9 @@ public class CadastraAlunoBean {
 		System.out.println("2");
 		//System.out.println(daoC.readById("20131370060").getNome());
 		System.out.println("1");
-		this.addMessage("Sucesso", "Usuário cadastrado!");
+		this.addMessage("Concluinte cadastrado", "Concluinte cadastrado!");
 		System.out.println("50");
-        return null;
+        return "boasVindas.jsf";
 	}
 	
 	public void addMessage(String summary, String detail){

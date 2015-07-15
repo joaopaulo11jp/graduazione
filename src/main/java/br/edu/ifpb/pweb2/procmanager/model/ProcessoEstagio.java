@@ -17,6 +17,8 @@ public class ProcessoEstagio {
 	private Date dataChegada;
 	@OneToOne
 	private Situacao situacao;
+	@OneToOne
+	private Concluinte concluinte;
 	
 		public ProcessoEstagio(Long protocolo, Professor orientador,
 				Date dataAbertura, Date dataChegada, Situacao situacao) {
@@ -50,6 +52,22 @@ public class ProcessoEstagio {
 
 	public void setDataChegada(Date dataChegada) {
 		this.dataChegada = dataChegada;
+	}
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
+
+	public Concluinte getConcluinte() {
+		return concluinte;
+	}
+
+	public void setConcluinte(Concluinte concluinte) {
+		this.concluinte = concluinte;
 	}
 	
 }

@@ -5,27 +5,28 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Concluinte {
 	@Id
 	private String matricula;
 	private String nome;
-	@OneToMany
-    @JoinTable(name="Concluinte_Banca", joinColumns={@JoinColumn(name="concluinte_id", referencedColumnName="matricula")}, inverseJoinColumns={@JoinColumn(name="professor_id", referencedColumnName="id")})
+	@ManyToMany
+    @JoinTable(name="Concluinte_Banca", joinColumns={@JoinColumn(name="concluinte_id",unique=false, referencedColumnName="matricula")}, inverseJoinColumns={@JoinColumn(name="professor_id",unique=false, referencedColumnName="id")})
 	private List<Professor> banca;
 	@OneToOne
 	private TipoDefesa tipo;
 	private String tituloDefesa;
 	private double nota;
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(optional=true)
+	@JoinColumn(name="concluinte")
 	private ProcessoEstagio processoEstagio;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="concluinte")

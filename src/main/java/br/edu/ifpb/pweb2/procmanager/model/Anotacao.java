@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Anotacao {
@@ -14,6 +15,8 @@ public class Anotacao {
 	private int id;
 	private Date dataCriacao;
 	private String anotacao;
+	@OneToOne
+	private Concluinte concluinte;
 	
 		public Anotacao(int id,Date dataCriacao,String anotacao){
 			this.id = id;
@@ -44,6 +47,14 @@ public class Anotacao {
 
 	public void setAnotacao(String anotacao) {
 		this.anotacao = anotacao;
+	}
+
+	public Concluinte getConcluinte() {
+		return concluinte;
+	}
+
+	public void setConcluinte(Concluinte concluinte) {
+		this.concluinte = concluinte;
 	}
 	
 }

@@ -9,9 +9,8 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import br.edu.ifpb.pweb2.procmanager.dao.DAOConcluinte;
 import br.edu.ifpb.pweb2.procmanager.dao.DAOProfessor;
@@ -24,7 +23,7 @@ import br.edu.ifpb.pweb2.procmanager.model.TipoDefesa;
 
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class CadastraAlunoBean {
 	private String matricula;
 	private String nome;
@@ -194,7 +193,7 @@ public class CadastraAlunoBean {
 
 
 
-	public void registrar(){
+	public String registrar(){
 		System.out.println("ENTROU NO REGISTRAR!");
 		DAOProfessor pDao = new DAOProfessor();
 		System.out.println("1");
@@ -228,12 +227,16 @@ public class CadastraAlunoBean {
 		System.out.println("1");
 		daoC.commit();
 		System.out.println("1");
-		
-		daoC.read("20131370060");
+		System.out.println("2");
+		//System.out.println(daoC.readById("20131370060").getNome());
 		System.out.println("1");
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Usu·rio cadastrado com sucesso!");
-        FacesContext.getCurrentInstance().addMessage(null, message);
-		
-
+		this.addMessage("Sucesso", "Usu√°rio cadastrado!");
+		System.out.println("50");
+        return null;
 	}
+	
+	public void addMessage(String summary, String detail){
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
 }

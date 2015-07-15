@@ -17,20 +17,20 @@
 		<div class="ui-grid ui-grid-responsive">
     		<div class="ui-grid-row">
         		<div class="ui-grid-col-2">
-					<label>Matrícula:</label>
+					<label>Matrícula:</label><br/>
             	<h:inputText size="20" value="#{cadastraAlunoBean.matricula}"/>
 				
                </div>
-        		<div class="ui-grid-col-4">
-					<label>Nome:</label>
+        		<div class="ui-grid-col-5">
+					<label>Nome:</label><br/>
             	<h:inputText size="60" value="#{cadastraAlunoBean.nome}"/>
             
 				</div>
 				
-				<div class="ui-grid-col-6">
+				<div class="ui-grid-col-5">
 
 
-            		<label>Título da defesa:</label>
+            		<label>Título da defesa:</label><br/>
             		<h:inputText size="60" value="#{cadastraAlunoBean.tituloDefesa}"/>
 				</div>
     		</div>
@@ -86,7 +86,7 @@
             			<f:selectItems value="#{cadastraAlunoBean.professoresReg}" />
         			</p:selectOneMenu>
         			<br/><br/>
-        			<p:commandButton value="Registrar" id="withIcon" actionListener="#{cadastraAlunoBean.registrar()}" icon="ui-icon-disk" />
+        			<p:commandButton value="Registrar" id="withIcon" action="#{cadastraAlunoBean.registrar()}" icon="ui-icon-disk" />
       </h:form>  			
     </p:panel>
 	</ui:define>

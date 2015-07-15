@@ -21,7 +21,6 @@ public class Concluinte {
     @JoinTable(name="Concluinte_Banca", joinColumns={@JoinColumn(name="concluinte_id", referencedColumnName="matricula")}, inverseJoinColumns={@JoinColumn(name="professor_id", referencedColumnName="id")})
 	private List<Professor> banca;
 	@OneToOne
-	@PrimaryKeyJoinColumn
 	private TipoDefesa tipo;
 	private String tituloDefesa;
 	private double nota;
@@ -29,14 +28,14 @@ public class Concluinte {
 	@PrimaryKeyJoinColumn
 	private ProcessoEstagio processoEstagio;
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="concluinte_id")
+	@JoinColumn(name="concluinte")
 	private List<Anotacao> anotacoes;
 	@OneToMany
-	@JoinColumn(name="concluinte_id")
+	@JoinColumn(name="concluinte")
 	private List<Pendencia> pendencias;
 	private Date dataConclusao;
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="concluinte_id")
+	@JoinColumn(name="concluinte")
 	private List<Historico> conjuntoHistorico;
 	@OneToOne
 	private Professor orientador;

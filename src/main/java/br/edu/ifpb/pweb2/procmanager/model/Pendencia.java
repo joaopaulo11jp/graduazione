@@ -18,6 +18,8 @@ public class Pendencia {
 	@OneToOne
     @JoinTable(name="Pendencia_Tipo", joinColumns={@JoinColumn(name="pendencia_id", referencedColumnName="id")}, inverseJoinColumns={@JoinColumn(name="tipo_id", referencedColumnName="id")})
 	private TipoPendencia tipo;
+	@OneToOne
+	private Concluinte concluinte;
 	
 		public Pendencia(int id, boolean pendenciaSatisfeita, TipoPendencia tipo) {
 			this.id = id;
@@ -49,6 +51,14 @@ public class Pendencia {
 
 	public void setTipo(TipoPendencia tipo) {
 		this.tipo = tipo;
+	}
+
+	public Concluinte getConcluinte() {
+		return concluinte;
+	}
+
+	public void setConcluinte(Concluinte concluinte) {
+		this.concluinte = concluinte;
 	}
 	
 		

@@ -25,13 +25,13 @@ public class Concluinte {
 	private TipoDefesa tipo;
 	private String tituloDefesa;
 	private double nota;
-	@OneToOne(optional=true)
+	@OneToOne(optional=true,cascade=CascadeType.ALL)
 	@JoinColumn(name="concluinte")
 	private ProcessoEstagio processoEstagio;
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="concluinte")
 	private List<Anotacao> anotacoes;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="concluinte")
 	private List<Pendencia> pendencias;
 	private Date dataConclusao;

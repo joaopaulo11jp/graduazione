@@ -38,7 +38,7 @@ public abstract class DAO<T> implements DAOInterface<T>{
 	public void refresh(T obj){
 		manager.refresh(obj);
 	}
-//--- transaction
+
 	public static void begin(){
 		if(!manager.getTransaction().isActive())
 			manager.getTransaction().begin();

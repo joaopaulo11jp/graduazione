@@ -19,33 +19,25 @@
                 <p:menuitem value="Graduados" url="#" />
                 <p:menuitem value="Cadastrar novo concluinte" url="cadastrarAluno.jsf" />
            
-            <p:menuitem value="Open" url="#" />
-            <p:separator />
-            <p:menuitem value="Quit" url="#" />
         </p:submenu>
  
         <p:submenu label="Processos" icon="fa-graduation-cap">
-            <p:menuitem value="Abir novo processo" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+            <p:menuitem value="Lista" url="#"  />
+            <p:menuitem value="Abir novo processo" url="#"  />
             
         </p:submenu>
  
         <p:submenu label="Conta" icon="fa-graduation-cap">
-            <p:menuitem value="Alterar minha senha" url="#" icon="ui-icon-arrowreturnthick-1-w" />
-            <p:menuitem value="Criar nova conta" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+            <p:menuitem value="Alterar minha senha" url="#" />
+            <p:menuitem value="Criar nova conta" url="#"  />
         </p:submenu>
         
         <p:submenu label="Professores" icon="fa-graduation-cap">
-            <p:menuitem value="Cadastrar novo professor" url="#" icon="ui-icon-arrowreturnthick-1-w" />
+            <p:menuitem value="Lista de professores" url="#"  />
         </p:submenu>
  
         <p:submenu label="Configuraçãoes" icon="fa-graduation-cap">
-            <p:submenu label="Ajax" icon="ui-icon-refresh">
-                <p:menuitem value="Pendencias" actionListener="#{menuView.save}" icon="ui-icon-disk" update="messages"/>
-                <p:menuitem value="Update" actionListener="#{menuView.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>
-            </p:submenu>
-            <p:submenu label="Non-Ajax" icon="ui-icon-newwin">
-                <p:menuitem value="Delete" actionListener="#{menuView.delete}" icon="ui-icon-close" update="messages" ajax="false"/>
-            </p:submenu>
+            <p:menuitem value="Pendencias" url="#"  />
         </p:submenu>
  
  

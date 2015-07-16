@@ -57,4 +57,23 @@ public class ListaConcluinteBean implements Serializable{
 		loadFlashConcluinte(concluinte);
 		return "mostraAluno.jsf";
 	}
+	
+	public String editarAluno(Concluinte concluinte){
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("concluinte",concluinte);
+		
+		return "editarAluno.jsf";
+	}
+	
+	public String excluir(Concluinte concluinte){
+		DAOConcluinte daoC = new DAOConcluinte();
+		
+		daoC.begin();
+		
+		daoC.delete(daoC.read(concluinte.getMatricula()));
+		
+		daoC.commit();
+		
+		return "listarAluno.jsf?faces-redirect=true";
+	}
 }

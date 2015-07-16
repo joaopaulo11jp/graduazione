@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="templateModel.xhtml">
+	<ui:define name="titulo">Editar Aluno</ui:define>
+	
+	<ui:define name="inits">
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{editaAlunoBean.carregaAluno()}"></f:event>
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="body">
+		<p:panel id="basic" header="Alterar dados cadastrais" footer=""
+			style="margin-bottom:20px">
+			<h:form>
+				<!--             <p:graphicImage name="demo/images/godfather/godfather1.jpg" /> -->
+				<div class="ui-grid ui-grid-responsive">
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							<label>Matrícula:</label><br />
+							<h:inputText size="20" value="#{editaAlunoBean.concluinte.matricula}" />
+
+						</div>
+						<div class="ui-grid-col-5">
+							<label>Nome:</label><br />
+							<h:inputText size="60" value="#{editaAlunoBean.concluinte.nome}" />
+
+						</div>
+
+						<div class="ui-grid-col-5">
+
+
+							<label>Título da defesa:</label><br />
+							<h:inputText size="60" value="#{editaAlunoBean.concluinte.tituloDefesa}" />
+						</div>
+					</div>
+				</div>
+
+
+				<br />
+				<div class="ui-grid ui-grid-responsive">
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-4">
+							<p:outputLabel for="professor" value="Professor orientador: " />
+							<br />
+							<p:selectOneMenu id="professor"
+								value="#{editaAlunoBean.orientador}" effect="fold">
+								<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
+								<f:selectItems value="#{editaAlunoBean.professoresReg}" />
+							</p:selectOneMenu>
+
+						</div>
+						<div class="ui-grid-col-4">
+							<p:outputLabel for="apresentacao" value="Data de apresentação:" />
+							<p:calendar id="apresentacao"
+								value="#{editaAlunoBean.concluinte.dataApresentacao}" showOn="button" />
+
+						</div>
+
+						<div class="ui-grid-col-6">
+
+
+							<label>Nota:</label>
+							<h:inputText size="50" value="#{editaAlunoBean.concluinte.nota}" />
+						</div>
+					</div>
+				</div>
+				<br />
+				<p:outputLabel for="tipoDefesa" value="Tipo da defesa: " />
+				<br />
+				<p:selectOneMenu id="tipoDefesa" value="#{editaAlunoBean.tipo}"
+					effect="fold" >
+					<f:selectItem itemLabel="Selecione o tipo de defesa" itemValue="" />
+					<f:selectItems value="#{editaAlunoBean.tiposDefesa}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:outputLabel for="professorBanca" value="Banca: " />
+				<br />
+				<p:selectOneMenu id="professorBanca"
+					value="#{editaAlunoBean.professorBanca1}" effect="fold">
+					<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
+					<f:selectItems value="#{editaAlunoBean.professoresReg}" />
+				</p:selectOneMenu>
+
+				<p:selectOneMenu id="professorBanca2"
+					value="#{editaAlunoBean.professorBanca2}" effect="fold">
+					<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
+					<f:selectItems value="#{editaAlunoBean.professoresReg}" />
+				</p:selectOneMenu>
+
+				<p:selectOneMenu id="professorBanca3"
+					value="#{editaAlunoBean.professorBanca3}" effect="fold">
+					<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
+					<f:selectItems value="#{editaAlunoBean.professoresReg}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:commandButton value="Registrar" id="withIcon"
+					action="#{editaAlunoBean.atualizarAluno()}" icon="ui-icon-arrowrefresh-1-w" />
+			</h:form>
+		</p:panel>
+	</ui:define>
+</ui:composition>
+</html>

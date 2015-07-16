@@ -10,7 +10,7 @@
 <ui:composition template="templateModel.xhtml">
 	<ui:define name="titulo">Lista de concluintes</ui:define>
 	<ui:define name="body">
-		<p:panel>
+		
 			<p:panel id="basic" header="Concluintes" footer=""
 				style="margin-bottom:20px">
 				<h:form>
@@ -18,37 +18,37 @@
 						value="#{listaConcluinteBean.concluintes}"
 						widgetVar="concluintesTable"
 						emptyMessage="Não há registro de concluintes"
-						filteredValue="#{dtFilterView.filteredCars}" rows="10">
+						filteredValue="#{listaConcluintesBean.concluintes}" rows="10">
 
 
-						<p:column filterBy="#{concluinte.matricula}"
+						<p:column
 							headerText="Matrícula" filterMatchMode="contains">
 							<h:outputText value="#{concluinte.matricula}" />
 						</p:column>
 
-						<p:column filterBy="#{concluinte.nome}" headerText="Nome"
+						<p:column headerText="Nome"
 							filterMatchMode="contains">
 							<h:outputLink id="mandaAluno" value="mostraAluno.jsf">
 								<f:param name="matricula" value="#{concluinte.matricula}"/>#{concluinte.nome}
 							</h:outputLink>
 						</p:column>
 						
-						<p:column filterBy="#{concluinte.tipo.descricao}" headerText="Tipo de defesa"
+						<p:column headerText="Tipo de defesa"
 							filterMatchMode="contains">
 							<h:outputText value="#{concluinte.tipo.descricao}" />
 						</p:column>
 						
-						<p:column filterBy="#{concluinte.nota}" headerText="Nota da aprensentação"
+						<p:column headerText="Nota da aprensentação"
 							filterMatchMode="equals">
 							<h:outputText value="#{concluinte.nota}" />
 						</p:column>
 						
-						<p:column filterBy="#{concluinte.orientador.nome}" headerText="Orientador"
+						<p:column headerText="Orientador"
 							filterMatchMode="contains">
 							<h:outputText value="#{concluinte.orientador.nome}" />
 						</p:column>
 						
-						<p:column filterBy="#{concluinte.dataApresentacao}" headerText="Data de apresentação"
+						<p:column headerText="Data de apresentação"
 							filterMatchMode="equals">
 							<h:outputText value="#{concluinte.dataApresentacao}">
 								<f:convertDateTime pattern="dd/MM/YYYY"/>
@@ -56,16 +56,27 @@
 						</p:column>
 						
 						
-						<p:column filterBy="#{concluinte.processoEstagio.situacao.descricaoSituacao}" headerText="Status do Processo"
+						<p:column headerText="Status do Processo"
 							filterMatchMode="contains">
 							<h:outputText value="#{concluinte.processoEstagio.situacao.descricaoSituacao}" rendered="#{concluinte.processoEstagio != null}" />
 							<h:outputText value="Não há processo aberto" rendered="#{concluinte.processoEstagio == null}"/>
 						</p:column>
 						
+						<p:column headerText="Editar" style="text-align:center">
+							<p:commandButton action="#{listaConcluinteBean.editarAluno(concluinte)}" style="display:inline-block" icon="ui-icon-pencil
+ " title="Editar">
+ 							</p:commandButton>
+						</p:column>
+						
+						<p:column headerText="Excluir" style="text-align:center">
+							<p:commandButton actionListener="#{listaConcluinte.excluir(concluinte)}" style="display:inline-block" icon="ui-icon-closethick
+ " title="Excluir" />
+						</p:column>
+						
 					</p:dataTable>
 				</h:form>
 			</p:panel>
-		</p:panel>
+		
 	</ui:define>
 </ui:composition>
 </html>

@@ -23,6 +23,12 @@ public class Anotacao {
 			this.dataCriacao = dataCriacao;
 			this.anotacao = anotacao;
 		}
+		
+		public Anotacao(Date dataCriacao,String anotacao){
+			this.id = id;
+			this.dataCriacao = dataCriacao;
+			this.anotacao = anotacao;
+		}
 
 		public Anotacao(){}
 	public int getId() {

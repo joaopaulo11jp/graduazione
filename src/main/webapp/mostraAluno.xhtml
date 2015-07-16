@@ -10,35 +10,32 @@
 <ui:composition template="templateModel.xhtml">
 	<ui:define name="inits">
 		<f:metadata>
-			<f:viewParam name="matricula" value="#{mostraAlunoBean.mat}"></f:viewParam>
+			<f:viewParam name="matricula" value="#{mostraAlunoBean.matricula}"></f:viewParam>
 			<f:event type="preRenderView" listener="#{mostraAlunoBean.carregaAluno()}"></f:event>
 		</f:metadata>
 	</ui:define>
-	
 	<ui:define name="body">
-		#{mostraAlunoBean.concluinte.matricula}
-		#{mostraAlunoBean.concluinte.nome}
-		
-		<p:panel id="basic" header="Informações cadastrais" footer="" style="margin-bottom:20px">
+		<p:panel id="infoCadastrais" header="Informações cadastrais" footer="" style="margin-bottom:20px">
 			<div class="ui-grid ui-grid-responsive">
     		<div class="ui-grid-row">
         		<div class="ui-grid-col-2">
 					<label>Matrícula:</label><br/>
-            	<h:inputText size="20" value="#{cadastraAlunoBean.matricula}"/>
+            	<h:outputText value="#{mostraAlunoBean.concluinte.matricula}" style="font-weight:bold" />
 				
                </div>
         		<div class="ui-grid-col-5">
 					<label>Nome:</label><br/>
-            	<h:inputText size="60" value="#{cadastraAlunoBean.nome}"/>
+            	<h:outputText value="#{mostraAlunoBean.concluinte.nome}" style="font-weight:bold" />
             
 				</div>
 				
-				<div class="ui-grid-col-5">
+				<div class="ui-grid-col-6">
 
 
             		<label>Título da defesa:</label><br/>
-            		<h:inputText size="60" value="#{cadastraAlunoBean.tituloDefesa}"/>
+            		<h:outputText value="#{mostraAlunoBean.concluinte.tituloDefesa}" style="font-weight:bold"/>
 				</div>
+				
     		</div>
 		</div>
 		
@@ -47,16 +44,16 @@
    		<div class="ui-grid ui-grid-responsive">
     		<div class="ui-grid-row">
         		<div class="ui-grid-col-4">
-					<p:outputLabel for="professor" value="Professor orientador: " /><br/>
-        			<p:selectOneMenu id="professor" value="#{cadastraAlunoBean.orientador}" effect="fold">
-        			<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
-            			<f:selectItems value="#{cadastraAlunoBean.professoresReg}" />
-        			</p:selectOneMenu>
+					<label>Professor orientador: </label>
+					<h:outputText value="#{mostraAlunoBean.concluinte.orientador.nome}" style="font-weight:bold" />
+        		
 				
                </div>
         		<div class="ui-grid-col-4">
-            		<p:outputLabel for="apresentacao" value="Data de apresentação:" />
-        			<p:calendar id="apresentacao" value="#{cadastraAlunoBean.dataApresentacao}" showOn="button" />
+            		<p:outputLabel for="apresentacao" value="Data de apresentação:" /><br/>
+            		<h:outputText id="apresentacao" value="#{mostraAlunoBean.concluinte.dataApresentacao}" style="font-weight:bold">
+            				<f:convertDateTime pattern="dd/MM/YYYY"/>
+            		</h:outputText>
             
 				</div>
 				
@@ -64,39 +61,72 @@
 
 
             		<label>Nota:</label>
-            		<h:inputText size="50" value="#{cadastraAlunoBean.nota}"/>
+            		<h:outputText value="#{mostraAlunoBean.concluinte.nota}" style="font-weight:bold"/>
 				</div>
     		</div>
 		</div>
        <br/>
-       <p:outputLabel for="tipoDefesa" value="Tipo da defesa: " /><br/>
-       <p:selectOneMenu id="tipoDefesa" value="#{cadastraAlunoBean.tipo}" effect="fold">
-        			<f:selectItem itemLabel="Selecione o tipo de defesa" itemValue="" />
-            			<f:selectItems value="#{cadastraAlunoBean.tiposDefesa}" />
-        			</p:selectOneMenu>
+       <label>Tipo de Defesa: </label>
+       <h:outputText value="#{mostraAlunoBean.concluinte.tipo.descricao}" style="font-weight:bold"/>
        <br/>
        <br/>
-       <p:outputLabel for="professorBanca" value="Banca: " /><br/>
-        			<p:selectOneMenu id="professorBanca" value="#{cadastraAlunoBean.professorBanca1}" effect="fold">
-        			<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
-            			<f:selectItems value="#{cadastraAlunoBean.professoresReg}" />
-        			</p:selectOneMenu>
-        		
-        			<p:selectOneMenu id="professorBanca2" value="#{cadastraAlunoBean.professorBanca2}" effect="fold">
-        			<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
-            			<f:selectItems value="#{cadastraAlunoBean.professoresReg}" />
-        			</p:selectOneMenu>
-        			
-        			<p:selectOneMenu id="professorBanca3" value="#{cadastraAlunoBean.professorBanca3}" effect="fold">
-        			<f:selectItem itemLabel="Selecione o Professor" itemValue="" />
-            			<f:selectItems value="#{cadastraAlunoBean.professoresReg}" />
-        			</p:selectOneMenu>
+        <p:panelGrid>
+        <div class="ui-grid ui-grid-responsive">
+    		<div class="ui-grid-row">
+        		<div class="ui-grid-col-2">
+        			<p:dataList value="#{mostraAlunoBean.concluinte.banca}" var="professor" type="ordered" >
+        				<f:facet name="header">
+            			Banca
+        				</f:facet>
+        				#{professor.nome}
+    				</p:dataList>
         			<br/><br/>
-        			<p:commandButton value="Registrar" id="withIcon" action="#{cadastraAlunoBean.registrar()}" icon="ui-icon-disk" />
+        			
+        		</div>
+        	</div>
+        </div>	
+        </p:panelGrid>			
 		</p:panel>
-		
-		<p:panel id="basic2" header="2" footer="" style="margin-bottom:20px">
-			
+
+		<p:panel id="basic2" header="Anotações e Processo" footer=""
+			style="margin-bottom:20px">
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-5">
+
+						<p:panel>
+							<h:form>
+								<h3 style="margin-top: 0">Anotações</h3>
+								<p:inputTextarea rows="3" cols="60"
+									value="#{mostraAlunoBean.anotacao}" /><br/>
+								<p:commandButton value="Anotar"
+									action="#{mostraAlunoBean.registrarAnotacao()}">
+									 <f:param name="matricula" value="#{mostraAlunoBean.concluinte.matricula}"/>
+								</p:commandButton>
+							</h:form>
+
+<br/>
+							<p:dataTable var="anotacao"
+								value="#{mostraAlunoBean.concluinte.anotacoes}" emptyMessage="Não há anotações registradas">
+								<p:column headerText="Data">
+									<h:outputText value="#{anotacao.dataCriacao}">
+										<f:convertDateTime pattern="dd/MM/YYYY"/>
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Anotação">
+									<h:outputText value="#{anotacao.anotacao}" />
+								</p:column>
+							</p:dataTable>
+						</p:panel>
+                     </div>
+                     <div class="ui-grid-col-2">
+						<p:panel>
+
+						</p:panel>
+					</div>
+				</div>
+			</div>	
 		</p:panel>
 	</ui:define>
 </ui:composition>

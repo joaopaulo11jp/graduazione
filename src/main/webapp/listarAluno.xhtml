@@ -22,7 +22,7 @@
 
 
 						<p:column
-							headerText="Matrícula" filterMatchMode="contains">
+							headerText="Matrícula" >
 							<h:outputText value="#{concluinte.matricula}" />
 						</p:column>
 
@@ -59,7 +59,12 @@
 						<p:column headerText="Status do Processo"
 							filterMatchMode="contains">
 							<h:outputText value="#{concluinte.processoEstagio.situacao.descricaoSituacao}" rendered="#{concluinte.processoEstagio != null}" />
-							<h:outputText value="Não há processo aberto" rendered="#{concluinte.processoEstagio == null}"/>
+							<p:panel rendered="#{concluinte.processoEstagio == null}">
+								<h:outputText value="Não há processo aberto"/><br/>
+								<h:outputLink id="mandaAlunoParaProcesso" value="cadastrarProcesso.jsf">
+								<f:param name="matricula" value="#{concluinte.matricula}"/>Crie um novo
+							</h:outputLink>
+							</p:panel>
 						</p:column>
 						
 						<p:column headerText="Editar" style="text-align:center">
@@ -69,7 +74,7 @@
 						</p:column>
 						
 						<p:column headerText="Excluir" style="text-align:center">
-							<p:commandButton actionListener="#{listaConcluinte.excluir(concluinte)}" style="display:inline-block" icon="ui-icon-closethick
+							<p:commandButton action="#{listaConcluinteBean.excluir(concluinte)}" style="display:inline-block" icon="ui-icon-closethick
  " title="Excluir" />
 						</p:column>
 						

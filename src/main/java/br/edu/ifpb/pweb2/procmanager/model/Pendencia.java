@@ -21,7 +21,7 @@ public class Pendencia {
 	@OneToOne
 	private Concluinte concluinte;
 	
-		public Pendencia(int id, boolean pendenciaSatisfeita, TipoPendencia tipo) {
+		public Pendencia(boolean pendenciaSatisfeita, TipoPendencia tipo) {
 			this.id = id;
 			this.pendenciaSatisfeita = pendenciaSatisfeita;
 			this.tipo = tipo;

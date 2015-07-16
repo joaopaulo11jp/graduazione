@@ -23,23 +23,20 @@
  
         <p:submenu label="Processos" icon="fa-graduation-cap">
             <p:menuitem value="Lista" url="#"  />
-            <p:menuitem value="Abir novo processo" url="#"  />
             
         </p:submenu>
+ 
+ 		<p:submenu label="Professores" icon="fa-graduation-cap">
+            <p:menuitem value="Lista de professores" url="listaProfessores.jsf"  />
+        </p:submenu>
+ 
  
         <p:submenu label="Conta" icon="fa-graduation-cap">
             <p:menuitem value="Alterar minha senha" url="#" />
             <p:menuitem value="Criar nova conta" url="#"  />
         </p:submenu>
         
-        <p:submenu label="Professores" icon="fa-graduation-cap">
-            <p:menuitem value="Lista de professores" url="#"  />
-        </p:submenu>
- 
-        <p:submenu label="Configuraçãoes" icon="fa-graduation-cap">
-            <p:menuitem value="Pendencias" url="#"  />
-        </p:submenu>
- 
+     
  
         <f:facet name="options">
             Olá, #{sessionBean.usuario.professor.nome}.

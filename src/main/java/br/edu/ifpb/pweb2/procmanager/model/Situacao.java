@@ -13,7 +13,7 @@ public class Situacao {
 	private String descricaoSituacao;
 	private int ordem;
 	
-		public Situacao(int id, String descricaoSituacao, int ordem) {
+		public Situacao(String descricaoSituacao, int ordem) {
 			this.id = id;
 			this.descricaoSituacao = descricaoSituacao;
 			this.ordem = ordem;

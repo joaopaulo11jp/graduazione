@@ -4,19 +4,43 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="templateModel.xhtml">
-	<ui:define name=titulo>Lista de professores</ui:define>
+	<ui:define name="titulo">Lista de professores</ui:define>
 	
 	<ui:define name="inits">
 		<f:metadata>
-			<f:event type="preRenderView" listener="#{listaProfessorBean.carregaProfessores()}"/>
+			<f:event type="preRenderView" listener="#{listaProfessoresBean.carregaProfessores()}"/>
 		</f:metadata>
 	</ui:define>
 	
 	<ui:define name="body">
-		
+		<p:panel id="basic" header="Novo Professor" footer="">
+		<h:form>
+			<label>Nome: </label>
+            <h:inputText size="60" value="#{listaProfessoresBean.nome}"/><br/><br/>
+            <p:commandButton value="Registrar" action="#{listaProfessoresBean.registrar()}" icon="ui-icon-disk" />
+        </h:form>    	
+		</p:panel>
+		<br/><br/>
+		<p:panel header="Professores">
+			<p:dataTable var="professor"
+						value="#{listaProfessoresBean.professores}"
+						emptyMessage="Não há registro de professores" rows="10">
+						
+				
+				<p:column headerText="ID">
+							<h:outputText value="#{professor.id}" />
+				</p:column>		
+				<p:column headerText="Nome">
+							<h:outputText value="#{professor.nome}" />
+				</p:column>		
+				
+				
+			</p:dataTable>			
+		</p:panel>
 	</ui:define>
 </ui:composition>
 </html>

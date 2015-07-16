@@ -1,18 +1,16 @@
 package br.edu.ifpb.pweb2.procmanager.model;
 
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
 public class ProcessoEstagio {
 	@Id
-	private Long protocolo;
+	private String protocolo;
 	private Date dataAbertura;
 	private Date dataChegada;
 	@OneToOne
@@ -20,7 +18,7 @@ public class ProcessoEstagio {
 	@OneToOne
 	private Concluinte concluinte;
 	
-		public ProcessoEstagio(Long protocolo, Professor orientador,
+		public ProcessoEstagio(String protocolo,
 				Date dataAbertura, Date dataChegada, Situacao situacao) {
 			this.protocolo = protocolo;
 			this.dataAbertura = dataAbertura;
@@ -30,11 +28,11 @@ public class ProcessoEstagio {
 		
 		public ProcessoEstagio(){}
 
-	public Long getProtocolo() {
+	public String getProtocolo() {
 		return protocolo;
 	}
 
-	public void setProtocolo(Long protocolo) {
+	public void setProtocolo(String protocolo) {
 		this.protocolo = protocolo;
 	}
 
@@ -60,8 +58,8 @@ public class ProcessoEstagio {
 
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
-	}
 
+	}
 	public Concluinte getConcluinte() {
 		return concluinte;
 	}

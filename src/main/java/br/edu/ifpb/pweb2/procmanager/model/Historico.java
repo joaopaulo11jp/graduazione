@@ -15,7 +15,7 @@ public class Historico {
 	private Date dataCriacao;
 	private String historico;
 	
-		public Historico(int id, Date dataCriacao, String historico) {
+		public Historico(Date dataCriacao, String historico) {
 			this.id = id;
 			this.dataCriacao = dataCriacao;
 			this.historico = historico;

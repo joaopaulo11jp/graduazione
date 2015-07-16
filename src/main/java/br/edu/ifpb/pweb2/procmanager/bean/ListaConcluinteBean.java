@@ -76,4 +76,8 @@ public class ListaConcluinteBean implements Serializable{
 		
 		return "listarAluno.jsf?faces-redirect=true";
 	}
+	
+	public List<Concluinte> getConcluintesComPendencias(){
+		return new DAOConcluinte().readAllConcluiteWithPendencias();
+	}
 }

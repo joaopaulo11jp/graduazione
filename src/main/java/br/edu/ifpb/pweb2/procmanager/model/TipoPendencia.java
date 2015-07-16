@@ -13,8 +13,7 @@ public class TipoPendencia {
 	private String descricaoPendencia;
 	private boolean obrigatoria;
 	
-		public TipoPendencia(int id, String descricaoPendencia) {
-			this.id = id;
+		public TipoPendencia(String descricaoPendencia) {
 			this.descricaoPendencia = descricaoPendencia;
 		}
 		
